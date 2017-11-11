@@ -1,0 +1,8 @@
+.pyc
+*.pyc
+migrations
+env.py
+/static/upload
+.DS_Store
+db.sqlite3
+/env

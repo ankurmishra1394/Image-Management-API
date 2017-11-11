@@ -79,7 +79,7 @@ def self_link(temp_name):
 	from env import HOST
 	if HOST == 'localhost':
 		HOST = '127.0.0.1:8000'
-	return "http://"+HOST+"/service/image?file="+temp_name
+	return "http://"+HOST+"/serve/image?file="+temp_name
 
 def load_file(file):
 	with open(file, 'r') as file:

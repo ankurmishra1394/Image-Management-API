@@ -42,7 +42,7 @@ class Command(BaseCommand):
 				answer = raw_input("You are not registered with us. Do you want us to register you\
 					[Y/N]? ").lower()
 			if answer == 'y':
-				return register_user(email, password)
+				return self.register_user(email, password)
 			return None
 		from service.utility import validate_password
 		if not validate_password(str(password), str(user[0].password)):

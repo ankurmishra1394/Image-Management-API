@@ -17,6 +17,10 @@ class Command(BaseCommand):
 			user_password = raw_input("Enter your password(minimum of 6) : ")
 
 		user = self.validate_and_respond(user_email, user_password)
+		
+		if not user:
+			print "\n Thankyou \n"
+
 		print "\n Your access-token token is : \n"+user.token+"\n"
 		print "Please set this access-token in header before sending requests \n"
 
@@ -39,6 +43,7 @@ class Command(BaseCommand):
 					[Y/N]? ").lower()
 			if answer == 'y':
 				return register_user(email, password)
+			return None
 		from service.utility import validate_password
 		if not validate_password(str(password), str(user[0].password)):
 			print "\n ** Email and password not matched. Please try again ! ** \n"

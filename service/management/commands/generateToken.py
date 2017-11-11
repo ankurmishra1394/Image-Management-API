@@ -50,7 +50,7 @@ class Command(BaseCommand):
 			sys.exit()
 		return user[0]
 
-	def register_user(email, password):
+	def register_user(self, email, password):
 		from service.models import Users
 		from service.utility import generate_uuid, hash
 		data = {

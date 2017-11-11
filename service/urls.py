@@ -28,9 +28,9 @@ urlpatterns = [
 	# #
 
 	## URI for Uploading a image
-	url(r'^service/image$', views.ServiceView.as_view('uploadImage', method=['GET', 'POST']) ),
+	url(r'^serve/image$', views.ServiceView.as_view('uploadImage', method=['GET', 'POST']) ),
 
 	# URI for updating a image
-	url(r'^service/image/(?P<upload_id>[a-zA-Z0-9\-]+)$', views.ServiceView.as_view('updateImage', method=['PATCH', 'DELETE']) ),
+	url(r'^serve/image/(?P<upload_id>[a-zA-Z0-9\-]+)$', views.ServiceView.as_view('updateImage', method=['PATCH', 'DELETE']) ),
 
 ]

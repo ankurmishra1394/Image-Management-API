@@ -27,7 +27,6 @@ class LocalUploader(object):
 		files = request.FILES.getlist('files[]')
 		upload_response = []
 		for file in files:
-			fs = FileSystemStorage()
 			file_detail = get_file_details(file, request)
 			pil_image = Image.open(file, 'r')
 			pil_image.save(os.path.join(os.environ['UPLOAD_FOLDER'], file_detail['local_name']), pil_image.format, quality=70)

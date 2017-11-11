@@ -2,7 +2,7 @@
 *.pyc
 migrations
 env.py
-/static/upload
+/static/uploads
 .DS_Store
 db.sqlite3
 /env

@@ -37,3 +37,9 @@ python manage.py generateToken
   If your host is localhost, then let the host be same or change the host. It you want to run on production, set DEBUG = False.
   ```
 3. pip install -r requirement.txt
+
+## Running Migration
+```
+python manage.py makemigrations service
+python manage migrate
+```

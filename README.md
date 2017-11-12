@@ -16,7 +16,7 @@ Upload
 ```
 1. service/image - POST, GET
 2. service/image/{{upload_id}} - POST, GET
-3. service/image?file=filename - GET
+3. service/image/filename - GET
 ```
 
 ## Management Command

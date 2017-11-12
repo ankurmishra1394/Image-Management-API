@@ -33,9 +33,6 @@ class ServiceView(CustomView):
 	@auth_middleware
 	def uploadImage(self, request):
 
-		if request.method == 'GET':
-			return self.viewImage(request)
-
 		from service import LocalUploader
 		from upload_service.controller.response.RespondWithList import RespondWithList
 		from transformers import UploadTransformer
@@ -43,13 +40,13 @@ class ServiceView(CustomView):
 		result = LocalUploader().upload(request)
 		return RespondWithList().transform(result, UploadTransformer, message='File Uploaded Successfully', status_code=201)
 
-	@auth_middleware
-	def viewImage(self, request):
+	# @auth_middleware
+	def viewImage(self, request, filename):
 		from django.shortcuts import HttpResponse
 		from service import LocalUploader
 		from transformers import UploadTransformer
 
-		file, mimetype = LocalUploader().accessFile(request)
+		file, mimetype = LocalUploader().accessFile(request, filename)
 		response = HttpResponse(file, content_type=mimetype)
 		return response
 

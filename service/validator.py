@@ -74,12 +74,10 @@ def on_upload_update_request(request, upload_id):
 		delete_file(upload[0].path)
 	return True
 
-def on_upload_access_request(request):
+def on_upload_access_request(filename):
 	import os
 
-	if 'file' not in request.GET:
-		raise MissingRequiredParameterException(params={'file'}, payload=(['hint','Please provide a valid uploaded file name.'],))
-	file_exists = os.path.exists(os.environ['UPLOAD_FOLDER']+'/'+request.GET['file'])
+	file_exists = os.path.exists(os.environ['UPLOAD_FOLDER']+'/'+filename)
 	if not file_exists:
 		from upload_service.middleware.exception.InvalidRequestException import InvalidRequestException
 		raise InvalidRequestException(params={'file'}, payload=(['hint','Please validate file name first.'],))

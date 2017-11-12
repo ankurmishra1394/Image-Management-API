@@ -40,7 +40,7 @@ class LocalUploader(object):
 	# @param request object
 	# @return file
 	##
-	def accessFile(self, request):
+	def accessFile(self, request, filename):
 		import os
 		from validator import on_upload_access_request
 		from utility import load_file, get_mime_from_path
@@ -48,8 +48,8 @@ class LocalUploader(object):
 		if not os.path.isdir(os.environ['UPLOAD_FOLDER']):
 			os.mkdir(os.environ['UPLOAD_FOLDER'])
 
-		on_upload_access_request(request)
-		filepath = os.path.join(os.environ['UPLOAD_FOLDER'], request.GET['file'])
+		on_upload_access_request(filename)
+		filepath = os.path.join(os.environ['UPLOAD_FOLDER'], filename)
 		return load_file(filepath), get_mime_from_path(filepath)
 
 	## 

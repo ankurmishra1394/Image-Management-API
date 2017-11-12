@@ -27,10 +27,13 @@ urlpatterns = [
 	#  3. service/image/upload-id - FOR UPDATING IMAGE
 	# #
 
-	## URI for Uploading a image
-	url(r'^serve/image$', views.ServiceView.as_view('uploadImage', method=['GET', 'POST']) ),
+	## URI for Uploading an image
+	url(r'^serve/image$', views.ServiceView.as_view('uploadImage', method=['POST']) ),
 
-	# URI for updating a image
+	# URI for updating/deleting an image
 	url(r'^serve/image/(?P<upload_id>[a-zA-Z0-9\-]+)$', views.ServiceView.as_view('updateImage', method=['PATCH', 'DELETE']) ),
+	
+	## URI for Viewing an image by image-name
+	url(r'^serve/image/(?P<filename>[\w.-]+)$', views.ServiceView.as_view('viewImage', method=['GET']) ),
 
 ]
